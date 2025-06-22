@@ -152,11 +152,13 @@ Total skor maksimal: 100 poin
 ## Tim Pengembang
 
 [Nama Anggota Kelompok]
-- Anggota 1: [Nama] - [NRP]
-- Anggota 2: [Nama] - [NRP]
-- Anggota 3: [Nama] - [NRP]
-- Anggota 4: [Nama] - [NRP]
-- Anggota 5: [Nama] - [NRP]
+Nama | NRP
+--- | ---
+Putu Yudi Nandanjaya Wiraguna	| 5027241080
+Daniswara Fausta Novanto | 5027241050
+Revalina Erica Permatasari | 5027241007
+Ahmad Wildan Fawwaz | 5027241001	
+Angga Firmansyah | 5027241062	
 
 ## Lisensi
 
