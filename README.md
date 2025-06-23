@@ -85,16 +85,15 @@ TransportationSystem (Main Class)
 
 ## Cara Kompilasi dan Menjalankan
 
-\`\`\`bash
+```bash```
 # Kompilasi
-make
+```make```
 
 # Atau manual
-g++ -std=c++17 -Wall -Wextra -O2 -o transportation_system main.cpp TransportationSystem.cpp
+```g++ -std=c++17 -Wall -Wextra -O2 -o transportation_system main.cpp TransportationSystem.cpp```
 
 # Menjalankan
-./transportation_system
-\`\`\`
+```./transportation_system```
 
 ## Menu Sistem
 
@@ -131,7 +130,7 @@ Sistem dilengkapi dengan data default kota-kota di Indonesia:
 
 ## Contoh Penggunaan
 
-\`\`\`cpp
+```cpp
 // Inisialisasi sistem
 TransportationSystem system;
 system.initializeDefaultData();
@@ -150,7 +149,7 @@ system.findBestRoute("Jakarta", "Bali");
 
 // Simulasi perjalanan
 system.simulateJourney("Jakarta", "Bali");
-\`\`\`
+```
 
 ## Penilaian
 
