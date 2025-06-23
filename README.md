@@ -72,7 +72,7 @@ Sistem rekomendasi rute transportasi berbasis preferensi pengguna yang diimpleme
 
 ## Struktur Kelas
 
-\`\`\`cpp
+```cpp
 TransportationSystem (Main Class)
 ├── Graph
 │   ├── Node (Lokasi)
@@ -81,7 +81,7 @@ TransportationSystem (Main Class)
 │   └── DecisionTree
 │       └── DecisionTreeNode
 └── RouteResult
-\`\`\`
+```
 
 ## Cara Kompilasi dan Menjalankan
 
