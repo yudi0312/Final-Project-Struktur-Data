@@ -1,4 +1,14 @@
-# Sistem Rekomendasi Rute Transportasi
+# Final Project Struktur Data Kelompok 6
+## Sistem Rekomendasi Rute Transportasi
+
+Nama | NRP
+--- | ---
+Putu Yudi Nandanjaya Wiraguna	| 5027241080
+Daniswara Fausta Novanto | 5027241050
+Revalina Erica Permatasari | 5027241007
+Ahmad Wildan Fawwaz | 5027241001	
+Angga Firmansyah | 5027241062	
+
 
 ## Deskripsi Proyek
 Sistem rekomendasi rute transportasi berbasis preferensi pengguna yang diimplementasikan menggunakan C++ dengan struktur data Graph dan Tree serta prinsip Object-Oriented Programming (OOP).
@@ -149,16 +159,6 @@ Total skor maksimal: 100 poin
 - Pemahaman (Tanya Jawab): 30%
 - Demo Video: 20%
 
-## Tim Pengembang
-
-[Nama Anggota Kelompok]
-Nama | NRP
---- | ---
-Putu Yudi Nandanjaya Wiraguna	| 5027241080
-Daniswara Fausta Novanto | 5027241050
-Revalina Erica Permatasari | 5027241007
-Ahmad Wildan Fawwaz | 5027241001	
-Angga Firmansyah | 5027241062	
 
 ## Lisensi
 
