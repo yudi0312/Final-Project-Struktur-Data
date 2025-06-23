@@ -163,3 +163,7 @@ Total skor maksimal: 100 poin
 ## Lisensi
 
 Proyek ini dibuat untuk keperluan akademis - Final Project ET234203 Struktur Data dan Pemrograman Berorientasi Objek.
+
+## Dokumentasi 
+![image](https://github.com/user-attachments/assets/8d5265dd-0807-4dca-8579-d06d0063e5b8)
+
