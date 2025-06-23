@@ -62,19 +62,23 @@ class Node {
 private:
     string name;
     vector<Edge> edges;
+    double x = 0 , y = 0;  
     
 public:
     // Default constructor
     Node() : name("") {}
     
     // Constructor dengan parameter
-    Node(const string& n) : name(n) {}
+    Node(const string& n, double x = 0, double y = 0) : name(n), x(x), y(y) {}
     
     string getName() const { return name; }
     void setName(const string& n) { name = n; }
     vector<Edge>& getEdges() { return edges; }
     const vector<Edge>& getEdges() const { return edges; }
+    double getX() const { return x; }
+    double getY() const { return y; }
     
+    void setCoordinates(double xCoord, double yCoord) { x = xCoord; y = yCoord; }
     void addEdge(const Edge& edge);
     bool removeEdge(const string& destination);
     void display() const;
@@ -92,7 +96,7 @@ struct RouteResult {
     RouteResult() : totalDistance(0), totalTime(0), totalCost(0), totalWeight(0), found(false) {}
 };
 
-// Kelas untuk Decision Tree
+// Kelas untuk Decision Tree    
 class DecisionTreeNode {
 public:
     string question;
@@ -162,6 +166,9 @@ public:
     bool removeNode(const string& name);
     void addEdge(const string& from, const string& to, double distance, double time, double cost);
     bool removeEdge(const string& from, const string& to);
+
+    unordered_map<string, Node>& getNodesMutable() { return nodes; }
+
     
     RouteResult dijkstra(const string& start, const string& end, OptimizationCriteria criteria, 
                         const map<OptimizationCriteria, double>& weights);
@@ -185,11 +192,16 @@ private:
 public:
     TransportationSystem();
     
+    Graph& getGraphMutable() { return graph; }
+
     // CRUD Operations
     void addLocation(const string& name);
     void removeLocation(const string& name);
     void addRoute(const string& from, const string& to, double distance, double time, double cost);
     void removeRoute(const string& from, const string& to);
+    
+    const Graph& getGraph() const { return graph; }
+
     
     // Route finding
     void findBestRoute(const string& from, const string& to);

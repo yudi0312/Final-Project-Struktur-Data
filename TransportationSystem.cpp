@@ -561,6 +561,7 @@ void TransportationSystem::loadFromFile(const string& filename) {
 
 void TransportationSystem::initializeDefaultData() {
     // Tambah lokasi-lokasi default
+    
     addLocation("Jakarta");
     addLocation("Bandung");
     addLocation("Surabaya");
@@ -570,6 +571,17 @@ void TransportationSystem::initializeDefaultData() {
     addLocation("Solo");
     addLocation("Cirebon");
     
+auto& nodes = graph.getNodesMutable();
+nodes.at("Jakarta").setCoordinates(100, 100);
+nodes.at("Bandung").setCoordinates(200, 150);
+nodes.at("Cirebon").setCoordinates(250, 100);
+nodes.at("Semarang").setCoordinates(400, 150);
+nodes.at("Yogyakarta").setCoordinates(350, 250);
+nodes.at("Solo").setCoordinates(400, 300);
+nodes.at("Surabaya").setCoordinates(550, 300);
+nodes.at("Malang").setCoordinates(500, 400);
+
+
     // Tambah rute-rute default dengan jarak (km), waktu (menit), biaya (Rp)
     addRoute("Jakarta", "Bandung", 150, 180, 50000);
     addRoute("Jakarta", "Cirebon", 230, 240, 75000);
