@@ -72,7 +72,7 @@ Sistem rekomendasi rute transportasi berbasis preferensi pengguna yang diimpleme
 
 ## Struktur Kelas
 
-```cpp
+```
 TransportationSystem (Main Class)
 ├── Graph
 │   ├── Node (Lokasi)
