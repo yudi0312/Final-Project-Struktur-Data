@@ -209,8 +209,11 @@ Proyek ini dibuat untuk keperluan akademis - Final Project ET234203 Struktur Dat
 
 ![Image](https://github.com/user-attachments/assets/f8a8b5d5-43d2-402e-9988-a853c2e55427)
 
-11. **Muat Data dari File** - Import data
-12. **Tampilkan Decision Tree** - Lihat struktur decision tree
+10. **Muat Data dari File** - Import data
+
+![Image](https://github.com/user-attachments/assets/62aa5916-72f5-4283-ad61-46b49e87b496)
+
+11. **Tampilkan Decision Tree** - Lihat struktur decision tree
 
 ****
 
