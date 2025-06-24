@@ -164,5 +164,31 @@ Total skor maksimal: 100 poin
 Proyek ini dibuat untuk keperluan akademis - Final Project ET234203 Struktur Data dan Pemrograman Berorientasi Objek.
 
 ## Dokumentasi 
+
+**Menu Sistem**
 ![image](https://github.com/user-attachments/assets/8d5265dd-0807-4dca-8579-d06d0063e5b8)
+
+1. **Tampilkan Graf Lokasi** - Lihat semua lokasi dan rute
+
+<img width="484" alt="image" src="https://github.com/user-attachments/assets/ab47831c-a612-44a4-ba53-a0efc3fc907f" />
+
+2. **Tambah Lokasi** - Menambah lokasi baru
+3. **Tambah Rute** - Menambah rute antar lokasi
+4. **Hapus Lokasi** - Menghapus lokasi dan semua rutenya
+5. **Hapus Rute** - Menghapus rute spesifik
+6. **Cari Rute Terbaik** - Pencarian rute optimal
+7. **Set Preferensi Pengguna** - Atur kriteria optimasi
+8. **Simulasi Perjalanan** - Simulasi step-by-step
+
+<img width="351" alt="image" src="https://github.com/user-attachments/assets/2893318b-8645-4db0-ae6b-00d9c81289fc" />
+
+<img width="392" alt="image" src="https://github.com/user-attachments/assets/a0502b31-b382-4d6f-abf9-8e8c2f83db37" />
+
+<img width="530" alt="image" src="https://github.com/user-attachments/assets/77d6f9ab-1573-4eb6-b752-87ac60e3f306" />
+
+9. **Simpan Data ke File** - Export data
+10. **Muat Data dari File** - Import data
+11. **Tampilkan Decision Tree** - Lihat struktur decision tree
+
+****
 
