@@ -181,16 +181,24 @@ Proyek ini dibuat untuk keperluan akademis - Final Project ET234203 Struktur Dat
 
 <img width="424" alt="image" src="https://github.com/user-attachments/assets/44af6da9-fd19-4d29-9d03-7467ab52f585" />
 
-<img width="476" alt="image" src="https://github.com/user-attachments/assets/0c3f0d9f-5e64-4700-b6c6-5e8f7fd70ff3" />
+
+<img width="497" alt="image" src="https://github.com/user-attachments/assets/adafcedb-3211-47c9-93af-cb772ca71938" />
+
 
 4. **Hapus Lokasi** - Menghapus lokasi dan semua rutenya
 
 <img width="413" alt="image" src="https://github.com/user-attachments/assets/b1f72e57-0d8e-4ecb-be2f-146be89995bf" />
 
-<img width="461" alt="image" src="https://github.com/user-attachments/assets/031c36fd-fe3b-4f0e-9f0b-fe6de3875704" />
+
+<img width="450" alt="image" src="https://github.com/user-attachments/assets/3bcb918b-f58a-4464-8ccb-2cb4ee1148d5" />
+
 
 6. **Hapus Rute** - Menghapus rute spesifik
 
+<img width="374" alt="image" src="https://github.com/user-attachments/assets/9b10e14c-bd8d-438e-87e7-2ae401d8f613" />
+
+
+<img width="460" alt="image" src="https://github.com/user-attachments/assets/1ec7e8cc-b36a-4c99-aee8-79f8af38fdf5" />
 
 
 7. **Cari Rute Terbaik** - Pencarian rute optimal
@@ -207,13 +215,19 @@ Proyek ini dibuat untuk keperluan akademis - Final Project ET234203 Struktur Dat
 
 9. **Simpan Data ke File** - Export data
 
+<img width="401" alt="image" src="https://github.com/user-attachments/assets/f0b267c1-2e48-42d2-a57c-96611dd3e9dc" />
+
+
 ![Image](https://github.com/user-attachments/assets/f8a8b5d5-43d2-402e-9988-a853c2e55427)
 
+  
 10. **Muat Data dari File** - Import data
 
-![Image](https://github.com/user-attachments/assets/62aa5916-72f5-4283-ad61-46b49e87b496)
-
+   ![Image](https://github.com/user-attachments/assets/62aa5916-72f5-4283-ad61-46b49e87b496)
+    
 11. **Tampilkan Decision Tree** - Lihat struktur decision tree
 
-****
+    <img width="413" alt="image" src="https://github.com/user-attachments/assets/26cb6942-3e8c-4e8d-a701-b169b105da06" />
 
+
+****
