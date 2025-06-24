@@ -197,7 +197,7 @@ Proyek ini dibuat untuk keperluan akademis - Final Project ET234203 Struktur Dat
 <img width="450" alt="image" src="https://github.com/user-attachments/assets/3bcb918b-f58a-4464-8ccb-2cb4ee1148d5" />
 
 
-6. **Hapus Rute** - Menghapus rute spesifik
+5. **Hapus Rute** - Menghapus rute spesifik
 
 <img width="374" alt="image" src="https://github.com/user-attachments/assets/9b10e14c-bd8d-438e-87e7-2ae401d8f613" />
 
@@ -205,7 +205,7 @@ Proyek ini dibuat untuk keperluan akademis - Final Project ET234203 Struktur Dat
 <img width="460" alt="image" src="https://github.com/user-attachments/assets/1ec7e8cc-b36a-4c99-aee8-79f8af38fdf5" />
 
 
-7. **Cari Rute Terbaik** - Pencarian rute optimal
+6. **Cari Rute Terbaik** - Pencarian rute optimal
 
 <img width="392" alt="image" src="https://github.com/user-attachments/assets/a0502b31-b382-4d6f-abf9-8e8c2f83db37" />
 
