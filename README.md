@@ -13,6 +13,7 @@ Angga Firmansyah | 5027241062
 ## Deskripsi Proyek
 Sistem rekomendasi rute transportasi berbasis preferensi pengguna yang diimplementasikan menggunakan C++ dengan struktur data Graph dan Tree serta prinsip Object-Oriented Programming (OOP).
 
+
 ## Fitur Utama
 
 ### 1. Representasi Graf Rute (12 poin)
@@ -70,6 +71,7 @@ Sistem rekomendasi rute transportasi berbasis preferensi pengguna yang diimpleme
 - Muat data dari file eksternal
 - Format data yang terstruktur
 
+
 ## Struktur Kelas
 
 ```
@@ -94,6 +96,7 @@ TransportationSystem (Main Class)
 
 # Menjalankan
 ```./transportation_system```
+
 
 ## Menu Sistem
 
@@ -162,6 +165,7 @@ Total skor maksimal: 100 poin
 ## Lisensi
 
 Proyek ini dibuat untuk keperluan akademis - Final Project ET234203 Struktur Data dan Pemrograman Berorientasi Objek.
+
 
 ## Dokumentasi 
 
