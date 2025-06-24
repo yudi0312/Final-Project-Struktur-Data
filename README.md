@@ -217,9 +217,6 @@ Proyek ini dibuat untuk keperluan akademis - Final Project ET234203 Struktur Dat
 
 ![Image](https://github.com/user-attachments/assets/69625b19-f87f-451d-97d7-64215a5b5970)
 
-
-![Image](https://github.com/user-attachments/assets/f8a8b5d5-43d2-402e-9988-a853c2e55427)
-
   
 10. **Muat Data dari File** - Import data
 
