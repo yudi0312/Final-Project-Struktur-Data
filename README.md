@@ -215,7 +215,7 @@ Proyek ini dibuat untuk keperluan akademis - Final Project ET234203 Struktur Dat
 
 9. **Simpan Data ke File** - Export data
 
-<img width="401" alt="image" src="https://github.com/user-attachments/assets/f0b267c1-2e48-42d2-a57c-96611dd3e9dc" />
+![Image](https://github.com/user-attachments/assets/69625b19-f87f-451d-97d7-64215a5b5970)
 
 
 ![Image](https://github.com/user-attachments/assets/f8a8b5d5-43d2-402e-9988-a853c2e55427)
