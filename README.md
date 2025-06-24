@@ -174,10 +174,26 @@ Proyek ini dibuat untuk keperluan akademis - Final Project ET234203 Struktur Dat
 <img width="484" alt="image" src="https://github.com/user-attachments/assets/ab47831c-a612-44a4-ba53-a0efc3fc907f" />
 
 2. **Tambah Lokasi** - Menambah lokasi baru
+
+<img width="398" alt="image" src="https://github.com/user-attachments/assets/76610497-6b4f-4e3e-a44e-4ad97f520a69" />
+
 3. **Tambah Rute** - Menambah rute antar lokasi
+
+<img width="424" alt="image" src="https://github.com/user-attachments/assets/44af6da9-fd19-4d29-9d03-7467ab52f585" />
+
+<img width="476" alt="image" src="https://github.com/user-attachments/assets/0c3f0d9f-5e64-4700-b6c6-5e8f7fd70ff3" />
+
 4. **Hapus Lokasi** - Menghapus lokasi dan semua rutenya
-5. **Hapus Rute** - Menghapus rute spesifik
-6. **Cari Rute Terbaik** - Pencarian rute optimal
+
+<img width="413" alt="image" src="https://github.com/user-attachments/assets/b1f72e57-0d8e-4ecb-be2f-146be89995bf" />
+
+<img width="461" alt="image" src="https://github.com/user-attachments/assets/031c36fd-fe3b-4f0e-9f0b-fe6de3875704" />
+
+6. **Hapus Rute** - Menghapus rute spesifik
+
+
+
+7. **Cari Rute Terbaik** - Pencarian rute optimal
 
 <img width="392" alt="image" src="https://github.com/user-attachments/assets/a0502b31-b382-4d6f-abf9-8e8c2f83db37" />
 
