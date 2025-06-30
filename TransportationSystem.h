@@ -105,10 +105,12 @@ public:
     DecisionTreeNode* rightChild;
     bool isLeaf;
     OptimizationCriteria result;
-    
+
+    // Konstruktor
     DecisionTreeNode(const string& q = "", bool leaf = false) 
         : question(q), leftChild(nullptr), rightChild(nullptr), isLeaf(leaf) {}
-    
+
+    // Destruktor
     ~DecisionTreeNode() {
         delete leftChild;
         delete rightChild;
