@@ -120,6 +120,8 @@ public:
 class DecisionTree {
 private:
     DecisionTreeNode* root;
+    void buildTree();
+    OptimizationCriteria traverseTree(DecisionTreeNode* node);
     
 public:
     DecisionTree();
@@ -128,10 +130,6 @@ public:
     OptimizationCriteria getRecommendation();
     void displayTree(DecisionTreeNode* node = nullptr, int depth = 0);
     DecisionTreeNode* getRoot() { return root; }
-    
-private:
-    void buildTree();
-    OptimizationCriteria traverseTree(DecisionTreeNode* node);
 };
 
 // Kelas untuk preferensi pengguna
