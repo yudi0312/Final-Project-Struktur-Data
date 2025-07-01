@@ -1,9 +1,11 @@
 #include "TransportationSystem.h"
 #include <iostream>
 #include <cfloat>
+#include <cmath> // Tambahkan ini agar sqrt dikenali
+#include <set>
+
 // Implementasi Edge
-Edge::Edge(const string& dest, double dist, double t, double c) 
-    : destination(dest), distance(dist), time(t), cost(c) {}
+
 
 double Edge::getWeight(OptimizationCriteria criteria, const map<OptimizationCriteria, double>& weights) const {
     switch (criteria) {
@@ -227,24 +229,30 @@ void Graph::addNode(const string& name) {
 bool Graph::removeNode(const string& name) {
     auto it = nodes.find(name);
     if (it != nodes.end()) {
-        // Hapus semua edge yang menuju ke node ini
-        for (auto& pair : nodes) {
-            pair.second.removeEdge(name);
+        // 1. Hapus semua edge dari node lain ke node ini
+        for (auto& [otherName, node] : nodes) {
+            if (otherName != name) {
+                node.removeEdge(name);
+            }
         }
+
+        // 2. Hapus node-nya sendiri (otomatis menghapus edge dari node tersebut ke node lain)
         nodes.erase(it);
+
         return true;
     }
     return false;
 }
 
-void Graph::addEdge(const string& from, const string& to, double distance, double time, double cost) {
+
+void Graph::addEdge(const string& from, const string& to, double distance, double time, double cost, RouteType type) {
     addNode(from);
     addNode(to);
-    
-    nodes[from].addEdge(Edge(to, distance, time, cost));
-    // Untuk graf tidak berarah, tambahkan edge sebaliknya
-    nodes[to].addEdge(Edge(from, distance, time, cost));
+
+    nodes[from].addEdge(Edge(to, distance, time, cost, type));
+    nodes[to].addEdge(Edge(from, distance, time, cost, type)); // Tambahkan dua arah
 }
+
 
 bool Graph::removeEdge(const string& from, const string& to) {
     bool removed1 = false, removed2 = false;
@@ -262,114 +270,157 @@ bool Graph::removeEdge(const string& from, const string& to) {
     return removed1 || removed2;
 }
 
-RouteResult Graph::dijkstra(const string& start, const string& end, OptimizationCriteria criteria,
-                           const map<OptimizationCriteria, double>& weights) {
-    RouteResult result;
-    
-    if (nodes.find(start) == nodes.end() || nodes.find(end) == nodes.end()) {
-        return result;
-    }
-    
-    // Priority queue untuk Dijkstra (weight, node, path)
-    priority_queue<pair<double, pair<string, vector<string>>>, 
-                   vector<pair<double, pair<string, vector<string>>>>,
-                   greater<pair<double, pair<string, vector<string>>>>> pq;
-    
-    map<string, double> distances;
-    map<string, vector<string>> paths;
-    map<string, pair<double, pair<double, double>>> routeInfo; // distance, time, cost
-    
-    // Inisialisasi
-    for (const auto& pair : nodes) {
-        distances[pair.first] = DBL_MAX;
-    }
-    distances[start] = 0;
-    
-    pq.push({0, {start, {start}}});
-    
-    while (!pq.empty()) {
-        double currentDist = pq.top().first;
-        string currentNode = pq.top().second.first;
-        vector<string> currentPath = pq.top().second.second;
-        pq.pop();
+    RouteResult Graph::dijkstra(const string& start, const string& end,
+                            OptimizationCriteria criteria,
+                            const map<OptimizationCriteria, double>& weights) const {
+        RouteResult result;
         
-        if (currentDist > distances[currentNode]) continue;
+        if (nodes.find(start) == nodes.end() || nodes.find(end) == nodes.end()) {
+            return result;
+        }
         
-        if (currentNode == end) {
-            result.found = true;
-            result.path = currentPath;
-            result.totalWeight = currentDist;
+        // Priority queue untuk Dijkstra (weight, node, path)
+        priority_queue<pair<double, pair<string, vector<string>>>, 
+                    vector<pair<double, pair<string, vector<string>>>>,
+                    greater<pair<double, pair<string, vector<string>>>>> pq;
+        
+        map<string, double> distances; //jarak terkecil
+        map<string, vector<string>> paths; //menyimpan rute terbaik
+        map<string, pair<double, pair<double, double>>> routeInfo; // distance, time, cost
+        
+        // Inisialisasi semua node dengan jarak tak terhingga
+        for (const auto& pair : nodes) {
+            distances[pair.first] = DBL_MAX;
+        }
+        distances[start] = 0;
+        
+        pq.push({0, {start, {start}}});
+        
+        while (!pq.empty()) {
+            double currentDist = pq.top().first; //bobot awal
+            string currentNode = pq.top().second.first; //node sekarang
+            vector<string> currentPath = pq.top().second.second; //rute terjauh
+            pq.pop();
             
-            // Hitung total distance, time, cost
-            for (size_t i = 0; i < currentPath.size() - 1; i++) {
-                const string& from = currentPath[i];
-                const string& to = currentPath[i + 1];
+            if (currentDist > distances[currentNode]) continue;
+            
+            if (currentNode == end) {
+                result.found = true;
+                result.path = currentPath;
+                result.totalWeight = currentDist;
                 
-                for (const auto& edge : nodes.at(from).getEdges()) {
-                    if (edge.getDestination() == to) {
-                        result.totalDistance += edge.getDistance();
-                        result.totalTime += edge.getTime();
-                        result.totalCost += edge.getCost();
-                        break;
+                // Hitung total distance, time, cost
+                for (size_t i = 0; i < currentPath.size() - 1; i++) {
+                    const string& from = currentPath[i];
+                    const string& to = currentPath[i + 1];
+                    
+                    for (const auto& edge : nodes.at(from).getEdges()) {
+                        if (edge.getDestination() == to) {
+                            result.totalDistance += edge.getDistance();
+                            result.totalTime += edge.getTime();
+                            result.totalCost += edge.getCost();
+                            break;
+                        }
                     }
                 }
+                break;
             }
-            break;
+            
+            for (const auto& edge : nodes.at(currentNode).getEdges()) {
+                string neighbor = edge.getDestination();
+                double weight = edge.getWeight(criteria, weights);
+                double newDist = currentDist + weight;
+                
+                if (newDist < distances[neighbor]) {
+                    distances[neighbor] = newDist;
+                    vector<string> newPath = currentPath;
+                    newPath.push_back(neighbor);
+                    pq.push({newDist, {neighbor, newPath}});
+                }
+            }
         }
         
-        for (const auto& edge : nodes[currentNode].getEdges()) {
-            string neighbor = edge.getDestination();
-            double weight = edge.getWeight(criteria, weights);
-            double newDist = currentDist + weight;
-            
-            if (newDist < distances[neighbor]) {
-                distances[neighbor] = newDist;
-                vector<string> newPath = currentPath;
-                newPath.push_back(neighbor);
-                pq.push({newDist, {neighbor, newPath}});
-            }
-        }
+        return result;
     }
-    
-    return result;
-}
 
 void Graph::display() const {
-    cout << "\n=== GRAF LOKASI DAN RUTE ===" << endl;
-    for (const auto& pair : nodes) {
-        pair.second.display();
-        cout << endl;
+    std::cout << "=== GRAF LOKASI DAN RUTE ===" << std::endl;
+
+    for (const auto& [name, node] : nodes) {
+        std::cout << "Lokasi: " << name << " (" << node.getX() << ", " << node.getY() << ")" << std::endl;
+
+        // Gunakan set untuk menghindari edge ke tujuan yang sama lebih dari sekali dari node yang sama
+        std::set<std::string> printed;
+
+        for (const auto& edge : node.getEdges()) {
+            const std::string& dest = edge.getDestination();
+
+            // Hanya cetak edge satu kali per tujuan
+            if (!nodes.count(dest) || printed.count(dest)) continue;
+
+            std::cout << "  -> " << dest
+                      << " (Jarak: " << edge.getDistance() << "km, "
+                      << "Waktu: " << edge.getTime() << "min, "
+                      << "Biaya: Rp" << static_cast<long long>(edge.getCost()) << ")"
+                      << " [" << routeTypeToString(edge.getRouteType()) << "]"
+                      << std::endl;
+
+            printed.insert(dest);
+        }
     }
 }
+
+
+
+
+
 
 bool Graph::hasNode(const string& name) const {
     return nodes.find(name) != nodes.end();
 }
 
-void Graph::saveToFile(const string& filename) const {
-    ofstream file(filename);
+void Graph::saveToFile(const std::string& filename) const {
+    std::ofstream file(filename);
     if (!file.is_open()) {
-        cout << "Error: Tidak dapat membuka file untuk menulis!" << endl;
+        std::cout << "Error: Tidak dapat membuka file untuk menulis!" << std::endl;
         return;
     }
-    
-    file << "NODES" << endl;
+
+    file << "NODES" << std::endl;
     for (const auto& pair : nodes) {
-        file << pair.first << endl;
+        file << pair.first << "," << pair.second.getX() << "," << pair.second.getY() << std::endl;
     }
-    
-    file << "EDGES" << endl;
+
+    file << "EDGES" << std::endl;
+    std::set<std::pair<std::string, std::string>> written;
+
     for (const auto& pair : nodes) {
-        const string& from = pair.first;
+        const std::string& from = pair.first;
         for (const auto& edge : pair.second.getEdges()) {
-            file << from << "," << edge.getDestination() << "," 
-                 << edge.getDistance() << "," << edge.getTime() << "," << edge.getCost() << endl;
+            const std::string& to = edge.getDestination();
+
+            // Lewati edge jika simpul tujuan sudah tidak ada
+            if (nodes.find(to) == nodes.end()) continue;
+
+            std::string a = std::min(from, to);
+            std::string b = std::max(from, to);
+
+            if (written.count({a, b}) == 0) {
+                file << from << "," << to << ","
+                     << edge.getDistance() << ","
+                     << edge.getTime() << ","
+                     << edge.getCost() << ","
+                     << routeTypeToString(edge.getRouteType()) << std::endl;
+
+                written.insert({a, b});
+            }
         }
     }
-    
+
     file.close();
-    cout << "Data berhasil disimpan ke " << filename << endl;
+    std::cout << "Data berhasil disimpan ke " << filename << std::endl;
 }
+
 
 void Graph::loadFromFile(const string& filename) {
     ifstream file(filename);
@@ -394,7 +445,18 @@ void Graph::loadFromFile(const string& filename) {
         }
         
         if (readingNodes && !line.empty()) {
-            addNode(line);
+            stringstream ss(line);
+        string name, xStr, yStr;
+        getline(ss, name, ',');
+    getline(ss, xStr, ',');
+    getline(ss, yStr);
+
+    addNode(name);
+    if (!xStr.empty() && !yStr.empty()) {
+        double x = stod(xStr);
+        double y = stod(yStr);
+        nodes[name].setCoordinates(x, y);
+    }
         } else if (readingEdges && !line.empty()) {
             stringstream ss(line);
             string from, to, distStr, timeStr, costStr;
@@ -410,9 +472,9 @@ void Graph::loadFromFile(const string& filename) {
             double cost = stod(costStr);
             
             // Hanya tambahkan satu arah untuk menghindari duplikasi
-            if (from < to) {
-                addEdge(from, to, distance, time, cost);
-            }
+            addEdge(from, to, distance, time, cost, RouteType::BIASA);
+            addEdge(to, from, distance, time, cost, RouteType::BIASA); // ← Selalu tambahkan dua arah
+
         }
     }
     
@@ -435,17 +497,61 @@ void TransportationSystem::removeLocation(const string& name) {
     }
 }
 
-void TransportationSystem::addRoute(const string& from, const string& to, double distance, double time, double cost) {
-    graph.addEdge(from, to, distance, time, cost);
+// Tetap gunakan Phytagoras HANYA jika koordinat sudah diset
+void TransportationSystem::addRoute(const string& from, const string& to, RouteType type) {
+    const auto& nodes = graph.getNodes();
+    if (!graph.hasNode(from) || !graph.hasNode(to)) return;
+
+    double x1 = nodes.at(from).getX();
+    double y1 = nodes.at(from).getY();
+    double x2 = nodes.at(to).getX();
+    double y2 = nodes.at(to).getY();
+
+    if ((x1 == 0 && y1 == 0) && (x2 == 0 && y2 == 0)) {
+        std::cerr << "Koordinat kosong! Tidak bisa menghitung jarak otomatis.\n";
+        return;
+    }
+
+    double dx = x2 - x1;
+    double dy = y2 - y1;
+    double distance = std::sqrt(dx * dx + dy * dy); // km
+
+    // Faktor berdasarkan jenis rute
+    double timePerKm, costPerKm;
+
+    switch (type) {
+        case RouteType::TOL:
+            timePerKm = 6.0; costPerKm = 25000; break;
+        case RouteType::RUSAK:
+            timePerKm = 15.0; costPerKm = 22000; break;
+        case RouteType::GUNUNG:
+            timePerKm = 20.0; costPerKm = 18000; break;
+        case RouteType::BIASA:
+        default:
+            timePerKm = 10.0; costPerKm = 20000; break;
+    }
+
+    double time = distance * timePerKm;
+    double cost = distance * costPerKm;
+
+    graph.addEdge(from, to, distance, time, cost, type);
+    graph.addEdge(to, from, distance, time, cost, type); 
 }
 
+
+
+
 void TransportationSystem::removeRoute(const string& from, const string& to) {
-    if (graph.removeEdge(from, to)) {
-        cout << "Rute dari " << from << " ke " << to << " berhasil dihapus!" << endl;
+    bool removed1 = graph.removeEdge(from, to);
+    bool removed2 = graph.removeEdge(to, from);
+
+    if (removed1 || removed2) {
+        cout << "Rute antara " << from << " dan " << to << " berhasil dihapus!" << endl;
     } else {
         cout << "Rute tidak ditemukan!" << endl;
     }
 }
+
 
 void TransportationSystem::findBestRoute(const string& from, const string& to) {
     if (!graph.hasNode(from)) {
@@ -561,7 +667,6 @@ void TransportationSystem::loadFromFile(const string& filename) {
 
 void TransportationSystem::initializeDefaultData() {
     // Tambah lokasi-lokasi default
-    
     addLocation("Jakarta");
     addLocation("Bandung");
     addLocation("Surabaya");
@@ -570,31 +675,37 @@ void TransportationSystem::initializeDefaultData() {
     addLocation("Malang");
     addLocation("Solo");
     addLocation("Cirebon");
-    
-auto& nodes = graph.getNodesMutable();
-nodes.at("Jakarta").setCoordinates(100, 100);
-nodes.at("Bandung").setCoordinates(200, 150);
-nodes.at("Cirebon").setCoordinates(250, 100);
-nodes.at("Semarang").setCoordinates(400, 150);
-nodes.at("Yogyakarta").setCoordinates(350, 250);
-nodes.at("Solo").setCoordinates(400, 300);
-nodes.at("Surabaya").setCoordinates(550, 300);
-nodes.at("Malang").setCoordinates(500, 400);
 
+    auto& nodes = graph.getNodesMutable();
+    nodes.at("Jakarta").setCoordinates(10, 10);
+    nodes.at("Bandung").setCoordinates(20, 15);
+    nodes.at("Cirebon").setCoordinates(25, 10);
+    nodes.at("Semarang").setCoordinates(40, 15);
+    nodes.at("Yogyakarta").setCoordinates(35, 25);
+    nodes.at("Solo").setCoordinates(40, 30);
+    nodes.at("Surabaya").setCoordinates(55, 30);
+    nodes.at("Malang").setCoordinates(50, 40);
 
-    // Tambah rute-rute default dengan jarak (km), waktu (menit), biaya (Rp)
-    addRoute("Jakarta", "Bandung", 150, 180, 50000);
-    addRoute("Jakarta", "Cirebon", 230, 240, 75000);
-    addRoute("Jakarta", "Semarang", 450, 480, 120000);
-    addRoute("Bandung", "Yogyakarta", 320, 360, 95000);
-    addRoute("Cirebon", "Semarang", 220, 240, 70000);
-    addRoute("Semarang", "Yogyakarta", 120, 90, 35000);
-    addRoute("Semarang", "Solo", 80, 60, 25000);
-    addRoute("Yogyakarta", "Solo", 60, 45, 20000);
-    addRoute("Solo", "Surabaya", 280, 300, 85000);
-    addRoute("Yogyakarta", "Malang", 350, 420, 100000);
-    addRoute("Surabaya", "Malang", 90, 120, 30000);
-    
+    // Tambah rute-rute default dengan jenis jalan
+    addRoute("Jakarta", "Bandung", RouteType::TOL);
+    addRoute("Jakarta", "Cirebon", RouteType::BIASA);
+    addRoute("Jakarta", "Semarang", RouteType::TOL);
+    addRoute("Bandung", "Yogyakarta", RouteType::RUSAK);
+    addRoute("Cirebon", "Semarang", RouteType::BIASA);
+    addRoute("Semarang", "Yogyakarta", RouteType::BIASA);
+    addRoute("Semarang", "Solo", RouteType::GUNUNG);
+    addRoute("Yogyakarta", "Solo", RouteType::BIASA);
+    addRoute("Solo", "Surabaya", RouteType::TOL);
+    addRoute("Yogyakarta", "Malang", RouteType::RUSAK);
+    addRoute("Surabaya", "Malang", RouteType::GUNUNG);
+
     cout << "Data default berhasil dimuat!" << endl;
     cout << "Sistem siap digunakan dengan " << graph.getNodes().size() << " lokasi." << endl;
+}
+
+
+void TransportationSystem::setLocationCoordinates(const string& name, double x, double y) {
+    if (graph.hasNode(name)) {
+        graph.getNodesMutable().at(name).setCoordinates(x, y);
+    }
 }

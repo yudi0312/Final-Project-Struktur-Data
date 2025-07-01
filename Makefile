@@ -8,6 +8,7 @@ $(TARGET): $(SOURCES)
 
 clean:
 	rm -f $(TARGET)
+	rm -f visualizer
 
 run: $(TARGET)
 	./$(TARGET)

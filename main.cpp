@@ -28,55 +28,71 @@ void displayMenu() {
     cout << "Pilihan: ";
 }
 
+RouteType selectRouteType() {
+    int opsi;
+    cout << "\nJenis Rute:\n";
+    cout << "1. Biasa (kecepatan sedang, biaya sedang)\n";
+    cout << "2. Tol (cepat tapi mahal)\n";
+    cout << "3. Rusak (lambat dan mahal)\n";
+    cout << "4. Gunung (sangat lambat, biaya rendah)\n";
+    cout << "Pilih jenis rute (1-4): ";
+    cin >> opsi;
+    cin.ignore();
+
+    switch (opsi) {
+        case 2: return RouteType::TOL;
+        case 3: return RouteType::RUSAK;
+        case 4: return RouteType::GUNUNG;
+        default: return RouteType::BIASA;
+    }
+}
+
 int main() {
     TransportationSystem system;
-    
-    // Inisialisasi data awal
     system.initializeDefaultData();
-    
+
     int choice;
-    string from, to, location, route;
-    double distance, time, cost;
-    
+    string from, to, location;
+
     while (true) {
         displayMenu();
         cin >> choice;
         cin.ignore();
-        
+
         switch (choice) {
             case 1:
                 system.displayGraph();
                 break;
-                
+
             case 2:
                 cout << "Masukkan nama lokasi baru: ";
                 getline(cin, location);
+                double x, y;
+                cout << "Masukkan koordinat x: ";
+                cin >> x;
+                cout << "Masukkan koordinat y: ";
+                cin >> y;
+                cin.ignore();
                 system.addLocation(location);
-                cout << "Lokasi berhasil ditambahkan!" << endl;
+                system.setLocationCoordinates(location, x, y);
+                cout << "Lokasi berhasil ditambahkan!\n";
                 break;
-                
+
             case 3:
                 cout << "Lokasi asal: ";
                 getline(cin, from);
                 cout << "Lokasi tujuan: ";
                 getline(cin, to);
-                cout << "Jarak (km): ";
-                cin >> distance;
-                cout << "Waktu (menit): ";
-                cin >> time;
-                cout << "Biaya (Rp): ";
-                cin >> cost;
-                
-                system.addRoute(from, to, distance, time, cost);
-                cout << "Rute berhasil ditambahkan!" << endl;
+                system.addRoute(from, to, selectRouteType());
+                cout << "Rute berhasil ditambahkan!\n";
                 break;
-                
+
             case 4:
                 cout << "Masukkan nama lokasi yang akan dihapus: ";
                 getline(cin, location);
                 system.removeLocation(location);
                 break;
-                
+
             case 5:
                 cout << "Lokasi asal: ";
                 getline(cin, from);
@@ -84,7 +100,7 @@ int main() {
                 getline(cin, to);
                 system.removeRoute(from, to);
                 break;
-                
+
             case 6:
                 cout << "Lokasi asal: ";
                 getline(cin, from);
@@ -92,11 +108,11 @@ int main() {
                 getline(cin, to);
                 system.findBestRoute(from, to);
                 break;
-                
+
             case 7:
                 system.setUserPreferences();
                 break;
-                
+
             case 8:
                 cout << "Lokasi asal: ";
                 getline(cin, from);
@@ -104,27 +120,27 @@ int main() {
                 getline(cin, to);
                 system.simulateJourney(from, to);
                 break;
-                
+
             case 9:
                 system.saveToFile("transportation_data.txt");
                 break;
-                
+
             case 10:
                 system.loadFromFile("transportation_data.txt");
                 break;
-                
+
             case 11:
                 system.displayDecisionTree();
                 break;
-                
+
             case 0:
-                cout << "Terima kasih telah menggunakan sistem!" << endl;
+                cout << "Terima kasih telah menggunakan sistem!\n";
                 return 0;
-                
+
             default:
-                cout << "Pilihan tidak valid!" << endl;
+                cout << "Pilihan tidak valid!\n";
         }
     }
-    
+
     return 0;
 }

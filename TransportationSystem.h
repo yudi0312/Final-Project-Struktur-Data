@@ -28,34 +28,75 @@ enum class OptimizationCriteria {
     COST,
     MULTI_CRITERIA
 };
+inline string criteriaToString(OptimizationCriteria criteria) {
+    switch (criteria) {
+        case OptimizationCriteria::DISTANCE: return "Jarak";
+        case OptimizationCriteria::TIME: return "Waktu";
+        case OptimizationCriteria::COST: return "Biaya";
+        case OptimizationCriteria::MULTI_CRITERIA: return "Gabungan";
+        default: return "Tidak diketahui";
+    }
+}
 
-// Kelas Edge untuk merepresentasikan rute
+// Enum jenis rute
+// Enum jenis rute
+enum class RouteType {
+    BIASA,
+    TOL,
+    RUSAK,
+    GUNUNG
+};
+
+// Konversi enum ke string
+inline string routeTypeToString(RouteType type) {
+    switch (type) {
+        case RouteType::TOL: return "TOL";
+        case RouteType::RUSAK: return "RUSAK";
+        case RouteType::GUNUNG: return "GUNUNG";
+        default: return "BIASA";
+    }
+}
+
+// Konversi string ke enum
+inline RouteType stringToRouteType(const string& str) {
+    if (str == "TOL") return RouteType::TOL;
+    if (str == "RUSAK") return RouteType::RUSAK;
+    if (str == "GUNUNG") return RouteType::GUNUNG;
+    return RouteType::BIASA;
+}
+
+// Kelas Edge
 class Edge {
 private:
     string destination;
     double distance;
     double time;
     double cost;
-    
+    RouteType type;
+
 public:
-    Edge(const string& dest, double dist, double t, double c);
-    
+    Edge(const string& dest, double dist, double t, double c, RouteType type = RouteType::BIASA)
+        : destination(dest), distance(dist), time(t), cost(c), type(type) {}
+
     // Getters
     string getDestination() const { return destination; }
     double getDistance() const { return distance; }
     double getTime() const { return time; }
     double getCost() const { return cost; }
-    
+    RouteType getRouteType() const { return type; }
+
     // Setters
     void setDistance(double dist) { distance = dist; }
     void setTime(double t) { time = t; }
     void setCost(double c) { cost = c; }
-    
-    // Method untuk menghitung bobot berdasarkan kriteria
+    void setRouteType(RouteType t) { type = t; }
+
+    // Bobot untuk Dijkstra
     double getWeight(OptimizationCriteria criteria, const map<OptimizationCriteria, double>& weights) const;
-    
+
     void display() const;
 };
+
 
 // Kelas Node untuk merepresentasikan lokasi
 class Node {
@@ -164,14 +205,16 @@ private:
 public:
     void addNode(const string& name);
     bool removeNode(const string& name);
-    void addEdge(const string& from, const string& to, double distance, double time, double cost);
+    void addEdge(const string& from, const string& to, double distance, double time, double cost, RouteType type = RouteType::BIASA);
     bool removeEdge(const string& from, const string& to);
 
     unordered_map<string, Node>& getNodesMutable() { return nodes; }
 
     
-    RouteResult dijkstra(const string& start, const string& end, OptimizationCriteria criteria, 
-                        const map<OptimizationCriteria, double>& weights);
+    RouteResult dijkstra(const string& start, const string& end,
+                     OptimizationCriteria criteria,
+                     const map<OptimizationCriteria, double>& weights) const;
+
     
     void display() const;
     bool hasNode(const string& name) const;
@@ -193,15 +236,18 @@ public:
     TransportationSystem();
     
     Graph& getGraphMutable() { return graph; }
+    UserPreferences& getUserPreferences() { return preferences; }
+    const UserPreferences& getUserPreferences() const { return preferences; }
 
     // CRUD Operations
     void addLocation(const string& name);
     void removeLocation(const string& name);
-    void addRoute(const string& from, const string& to, double distance, double time, double cost);
+    void addRoute(const std::string& from, const std::string& to, RouteType type);
     void removeRoute(const string& from, const string& to);
     
     const Graph& getGraph() const { return graph; }
 
+    RouteResult getLastRoute() const { return lastRoute; }
     
     // Route finding
     void findBestRoute(const string& from, const string& to);
@@ -220,6 +266,8 @@ public:
     
     // Initialization
     void initializeDefaultData();
+    
+    void setLocationCoordinates(const string& name, double x, double y);
 };
 
 #endif
