@@ -234,7 +234,6 @@ Proyek ini dibuat untuk keperluan akademis - Final Project ET234203 Struktur Dat
 
 12. Visualisasi
 
-<img width="959" alt="image" src="https://github.com/user-attachments/assets/f4a71f3e-77e3-40ac-bf9c-691711b48477" />
-
+![image](https://github.com/user-attachments/assets/d340962b-aefc-41a6-adda-60737f18783f)
 
 ****
