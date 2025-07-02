@@ -1,4 +1,4 @@
-# Final Project Struktur Data Kelompok 6
+<img width="959" alt="image" src="https://github.com/user-attachments/assets/53fa2318-06b2-4b2c-a357-fb4c24b6919e" /># Final Project Struktur Data Kelompok 6
 ## Sistem Rekomendasi Rute Transportasi
 
 Nama | NRP
@@ -92,11 +92,11 @@ TransportationSystem (Main Class)
 ```make```
 
 # Atau manual
-```g++ -std=c++17 -Wall -Wextra -O2 -o transportation_system main.cpp TransportationSystem.cpp```
+```g++ -std=c++17 -Wall -O2 -o visualizer visualizer.cpp TransportationSystem.cpp -lsfml-graphics -lsfml-window -lsfml-system```
 
 # Menjalankan
 ```./transportation_system```
-
+```./visualizer```
 
 ## Menu Sistem
 
@@ -229,6 +229,10 @@ Proyek ini dibuat untuk keperluan akademis - Final Project ET234203 Struktur Dat
 11. **Tampilkan Decision Tree** - Lihat struktur decision tree
 
     <img width="413" alt="image" src="https://github.com/user-attachments/assets/26cb6942-3e8c-4e8d-a701-b169b105da06" />
+
+12. Visualisasi
+
+<img width="959" alt="image" src="https://github.com/user-attachments/assets/f4a71f3e-77e3-40ac-bf9c-691711b48477" />
 
 
 ****
