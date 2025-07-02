@@ -169,71 +169,101 @@ Total skor maksimal: 100 poin
 Proyek ini dibuat untuk keperluan akademis - Final Project ET234203 Struktur Data dan Pemrograman Berorientasi Objek.
 
 
-## Dokumentasi 
+## Dokumentasi Sistem
 
-**Menu Sistem**
+### Menu Utama
 
-![image](https://github.com/user-attachments/assets/8d5265dd-0807-4dca-8579-d06d0063e5b8)
+![Menu Sistem](https://github.com/user-attachments/assets/8d5265dd-0807-4dca-8579-d06d0063e5b8)
 
-1. **Tampilkan Graf Lokasi** - Lihat semua lokasi dan rute
+---
 
-<img width="484" alt="image" src="https://github.com/user-attachments/assets/ab47831c-a612-44a4-ba53-a0efc3fc907f" />
+### 1. Tampilkan Graf Lokasi  
+Melihat semua lokasi dan rute yang tersedia dalam sistem.
 
-2. **Tambah Lokasi** - Menambah lokasi baru
+![Tampilkan Graf Lokasi](https://github.com/user-attachments/assets/ab47831c-a612-44a4-ba53-a0efc3fc907f)
 
-<img width="398" alt="image" src="https://github.com/user-attachments/assets/76610497-6b4f-4e3e-a44e-4ad97f520a69" />
+---
 
-3. **Tambah Rute** - Menambah rute antar lokasi
+### 2. Tambah Lokasi  
+Menambahkan lokasi baru ke dalam graf.
 
-<img width="424" alt="image" src="https://github.com/user-attachments/assets/44af6da9-fd19-4d29-9d03-7467ab52f585" />
+![Tambah Lokasi](https://github.com/user-attachments/assets/76610497-6b4f-4e3e-a44e-4ad97f520a69)
 
+---
 
-<img width="497" alt="image" src="https://github.com/user-attachments/assets/adafcedb-3211-47c9-93af-cb772ca71938" />
+### 3. Tambah Rute  
+Menambahkan rute antar dua lokasi yang sudah ada.
 
+| Form Input Rute | Data Rute Setelah Ditambah |
+|------------------|-----------------------------|
+| ![Form Tambah Rute](https://github.com/user-attachments/assets/44af6da9-fd19-4d29-9d03-7467ab52f585) | ![Rute Ditambahkan](https://github.com/user-attachments/assets/adafcedb-3211-47c9-93af-cb772ca71938) |
 
-4. **Hapus Lokasi** - Menghapus lokasi dan semua rutenya
+---
 
-<img width="413" alt="image" src="https://github.com/user-attachments/assets/b1f72e57-0d8e-4ecb-be2f-146be89995bf" />
+### 4. Hapus Lokasi  
+Menghapus lokasi tertentu beserta seluruh rutenya.
 
+| Form Hapus Lokasi | Data Setelah Dihapus |
+|-------------------|----------------------|
+| ![Form Hapus Lokasi](https://github.com/user-attachments/assets/b1f72e57-0d8e-4ecb-be2f-146be89995bf) | ![Setelah Lokasi Dihapus](https://github.com/user-attachments/assets/3bcb918b-f58a-4464-8ccb-2cb4ee1148d5) |
 
-<img width="450" alt="image" src="https://github.com/user-attachments/assets/3bcb918b-f58a-4464-8ccb-2cb4ee1148d5" />
+---
 
+### 5. Hapus Rute  
+Menghapus rute spesifik antar dua lokasi.
 
-5. **Hapus Rute** - Menghapus rute spesifik
+| Form Hapus Rute | Rute Setelah Dihapus |
+|-----------------|----------------------|
+| ![Form Hapus Rute](https://github.com/user-attachments/assets/9b10e14c-bd8d-438e-87e7-2ae401d8f613) | ![Rute Sudah Dihapus](https://github.com/user-attachments/assets/1ec7e8cc-b36a-4c99-aee8-79f8af38fdf5) |
 
-<img width="374" alt="image" src="https://github.com/user-attachments/assets/9b10e14c-bd8d-438e-87e7-2ae401d8f613" />
+---
 
+### 6. Cari Rute Terbaik  
+Mencari rute optimal berdasarkan kriteria yang dipilih.
 
-<img width="460" alt="image" src="https://github.com/user-attachments/assets/1ec7e8cc-b36a-4c99-aee8-79f8af38fdf5" />
+![Cari Rute Terbaik](https://github.com/user-attachments/assets/a0502b31-b382-4d6f-abf9-8e8c2f83db37)
 
+---
 
-6. **Cari Rute Terbaik** - Pencarian rute optimal
+### 7. Set Preferensi Pengguna  
+Mengatur kriteria optimasi: waktu, jarak, biaya, dll.
 
-<img width="392" alt="image" src="https://github.com/user-attachments/assets/a0502b31-b382-4d6f-abf9-8e8c2f83db37" />
+![Set Preferensi](https://github.com/user-attachments/assets/2893318b-8645-4db0-ae6b-00d9c81289fc)
 
-7. **Set Preferensi Pengguna** - Atur kriteria optimasi
+---
 
-<img width="351" alt="image" src="https://github.com/user-attachments/assets/2893318b-8645-4db0-ae6b-00d9c81289fc" />
+### 8. Simulasi Perjalanan  
+Menampilkan simulasi perjalanan secara bertahap dari titik awal ke tujuan.
 
-8. **Simulasi Perjalanan** - Simulasi step-by-step
+![Simulasi Perjalanan](https://github.com/user-attachments/assets/77d6f9ab-1573-4eb6-b752-87ac60e3f306)
 
-<img width="530" alt="image" src="https://github.com/user-attachments/assets/77d6f9ab-1573-4eb6-b752-87ac60e3f306" />
+---
 
-9. **Simpan Data ke File** - Export data
+### 9. Simpan Data ke File  
+Ekspor data lokasi dan rute ke file eksternal.
 
-![Image](https://github.com/user-attachments/assets/69625b19-f87f-451d-97d7-64215a5b5970)
+![Simpan Data](https://github.com/user-attachments/assets/69625b19-f87f-451d-97d7-64215a5b5970)
 
-  
-10. **Muat Data dari File** - Import data
+---
 
-   ![Image](https://github.com/user-attachments/assets/62aa5916-72f5-4283-ad61-46b49e87b496)
-    
-11. **Tampilkan Decision Tree** - Lihat struktur decision tree
+### 10. Muat Data dari File  
+Impor data lokasi dan rute dari file eksternal.
 
-    <img width="413" alt="image" src="https://github.com/user-attachments/assets/26cb6942-3e8c-4e8d-a701-b169b105da06" />
+![Muat Data](https://github.com/user-attachments/assets/62aa5916-72f5-4283-ad61-46b49e87b496)
 
-12. Visualisasi
+---
 
-![image](https://github.com/user-attachments/assets/d340962b-aefc-41a6-adda-60737f18783f)
+### 11. Tampilkan Decision Tree  
+Menampilkan struktur decision tree dari sistem yang digunakan.
+
+![Decision Tree](https://github.com/user-attachments/assets/26cb6942-3e8c-4e8d-a701-b169b105da06)
+
+---
+
+### 12. Visualisasi  
+Menampilkan representasi graf jaringan lokasi dan rute secara visual.
+
+![Visualisasi Graf](https://github.com/user-attachments/assets/d340962b-aefc-41a6-adda-60737f18783f)
+
 
 ****
