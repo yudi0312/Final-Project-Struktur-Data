@@ -1,4 +1,5 @@
-<img width="959" alt="image" src="https://github.com/user-attachments/assets/53fa2318-06b2-4b2c-a357-fb4c24b6919e" /># Final Project Struktur Data Kelompok 6
+# Final Project Struktur Data Kelompok 6
+
 ## Sistem Rekomendasi Rute Transportasi
 
 Nama | NRP
