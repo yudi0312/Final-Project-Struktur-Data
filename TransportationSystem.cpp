@@ -98,7 +98,7 @@ OptimizationCriteria DecisionTree::traverseTree(DecisionTreeNode* node) {
     char answer;
     cin >> answer;
     
-    if (answer == 'y' || answer == 'Y') {
+    if (answer == 'y' || answer == 'y') {
         return traverseTree(node->leftChild);
     } else {
         return traverseTree(node->rightChild);
