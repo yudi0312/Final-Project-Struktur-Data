@@ -198,7 +198,7 @@ Menambahkan rute antar dua lokasi yang sudah ada.
 
 | Form Input Rute | Data Rute Setelah Ditambah |
 |------------------|-----------------------------|
-| ![Form Tambah Rute](https://github.com/user-attachments/assets/eb1fa56c-37e9-4d70-90df-53e324e06079) | ![Rute Ditambahkan](https://github.com/user-attachments/assets/f4069f4c-d9ab-49b6-879d-7c37d28a2fde) |
+| ![Form Tambah Rute](https://github.com/user-attachments/assets/d47b2aff-776f-4948-8448-b0e3df99e4b8) | ![Rute Ditambahkan](https://github.com/user-attachments/assets/f4069f4c-d9ab-49b6-879d-7c37d28a2fde) |
 
 ---
 
