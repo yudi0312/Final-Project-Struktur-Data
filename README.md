@@ -180,14 +180,16 @@ Proyek ini dibuat untuk keperluan akademis - Final Project ET234203 Struktur Dat
 ### 1. Tampilkan Graf Lokasi  
 Melihat semua lokasi dan rute yang tersedia dalam sistem.
 
-![Tampilkan Graf Lokasi](https://github.com/user-attachments/assets/ab47831c-a612-44a4-ba53-a0efc3fc907f)
+![Tampilkan Graf Lokasi](https://github.com/user-attachments/assets/fec66d5d-d651-48dd-a70a-b822b38abd80)
 
 ---
 
 ### 2. Tambah Lokasi  
 Menambahkan lokasi baru ke dalam graf.
 
-![Tambah Lokasi](https://github.com/user-attachments/assets/76610497-6b4f-4e3e-a44e-4ad97f520a69)
+| Form Input Lokasi | Data Lokasi Setelah Ditambah |
+|------------------|-----------------------------|
+| ![Tambah Lokasi](https://github.com/user-attachments/assets/256128df-c6f1-4274-8383-45e154e5b9b6) | ![Lokasi Ditambahkan](https://github.com/user-attachments/assets/1788f506-e11b-4f7f-be3b-dcb22562be27) |
 
 ---
 
@@ -196,7 +198,7 @@ Menambahkan rute antar dua lokasi yang sudah ada.
 
 | Form Input Rute | Data Rute Setelah Ditambah |
 |------------------|-----------------------------|
-| ![Form Tambah Rute](https://github.com/user-attachments/assets/44af6da9-fd19-4d29-9d03-7467ab52f585) | ![Rute Ditambahkan](https://github.com/user-attachments/assets/adafcedb-3211-47c9-93af-cb772ca71938) |
+| ![Form Tambah Rute](https://github.com/user-attachments/assets/eb1fa56c-37e9-4d70-90df-53e324e06079) | ![Rute Ditambahkan](https://github.com/user-attachments/assets/f4069f4c-d9ab-49b6-879d-7c37d28a2fde) |
 
 ---
 
@@ -205,7 +207,7 @@ Menghapus lokasi tertentu beserta seluruh rutenya.
 
 | Form Hapus Lokasi | Data Setelah Dihapus |
 |-------------------|----------------------|
-| ![Form Hapus Lokasi](https://github.com/user-attachments/assets/b1f72e57-0d8e-4ecb-be2f-146be89995bf) | ![Setelah Lokasi Dihapus](https://github.com/user-attachments/assets/3bcb918b-f58a-4464-8ccb-2cb4ee1148d5) |
+| ![Form Hapus Lokasi](https://github.com/user-attachments/assets/b1f72e57-0d8e-4ecb-be2f-146be89995bf) | ![Setelah Lokasi Dihapus](https://github.com/user-attachments/assets/a4ee993b-443b-46e7-94d2-aebb295d9eca) |
 
 ---
 
